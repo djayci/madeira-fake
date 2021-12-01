@@ -11,8 +11,8 @@ const Home: NextPage = () => {
     e.preventDefault();
 
     try {
-      const response: Response = await Http.post('/api/generate', { name, medicalId });
-      return await response.json();
+      await Http.post('/api/generate', { name, medicalId });
+      window.location.pathname = `pdfs/${name}-${medicalId}.pdf`;
     } catch (e) {
       console.log(e);
     }
